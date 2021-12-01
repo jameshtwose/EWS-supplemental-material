@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Early Warning Signals calculation pipeline</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for EWS_calc"><tr><td>EWS_calc</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Early Warning Signals calculation pipeline
+</h2>
+
+<h3>Description</h3>
+
+<p>Run the Early Warning Signals calculations and return a data frame with the sum of dynamic complexity, the cumulative complexity peaks and the corresponding user_id and dates.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+EWS_calc(df)
+
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>df</code></td>
+<td>
+<p>A data frame with the features of interest, a <code>user_id</code> column and a <code>Timestamp</code>
+column.
+</p>
+</td></tr>
+<tr valign="top"><td><code>plot_pre</code></td>
+<td>
+<p>A boolean value indicating whether the preprocessing steps should be plotted.
+</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>This function assumes the data frame <code>df</code> that is passed is data from one user ONLY
+as this method is an individual based approach. To run this function across multiple users
+see the examples section. Furthermore, for the dynamic complexity functions that run inside
+this function there are parameters which are hard coded.
+</p>
+<p>These include:
+</p>
+<p>1. the window size (here the window is set to 28 due to the slow changing nature of MS)
+</p>
+<p>2. the scale minimum (here it is 0 because the inputted data should be scaled between 0 and 1)
+</p>
+<p>3. the scale maximum (here it is 1 because the inputted data should be scaled between 0 and 1)
+</p>
+<p>4. the item alpha (here it is set to 0.001 as we are only interested in very large change to be visualized)
+</p>
+<p>5. the time alpha (here it is set to 0.001 as we are only interested in very large change to be visualized)
+</p>
+
+
+<h3>Value</h3>
+
+<p>A data frame with the sum of dynamic complexity, the cumulative complexity peaks and the corresponding <code>user_id</code> and <code>Timestamp</code> columns.
+</p>
+
+
+<h3>Note</h3>
+
+<p>The main functions used here are <code>dc_win()</code>, <code>dc_ccp()</code> and functions from the <code>imputeTS</code> and <code>mice</code> packages. <code>dc_win()</code>, <code>dc_ccp()</code> are functions created by Fred Hasselman and Merlijn Olfthof.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>James Twose
+</p>
+
+
+<h3>References</h3>
+
+<p>Olthof, M., Hasselman, F., Strunk, G., van Rooij, M., Aas, B., Helmich, M. A., ... &amp; Lichtwarck-Aschoff, A. (2020). Critical fluctuations as an early-warning signal for sudden gains and losses in patients receiving psychotherapy for mood disorders. Clinical Psychological Science, 8(1), 25-35.
+</p>
+<p>Schiepek, G., &amp; Strunk, G. (2010). The identification of critical fluctuations and phase transitions in short term and coarse-grained time series-a method for the real-time monitoring of human change processes. Biological cybernetics, 102(3), 197-207.
+</p>
+<p>Schiepek, G. (2003). A Dynamic Systems Approach to Clinical Case Formulation. European Journal of Psychological Assessment, 19, 175-184.
+</p>
+<p>Haken, H. &amp; Schiepek, G. (2006, 2. Aufl. 2010). Synergetik in der Psychologie. Selbstorganisation verstehen und gestalten. Gottingen: Hogrefe.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## For a single user, with preprocessing steps plotted:
+EWS_calc(df=df, plot_pre=TRUE)
+
+## For a single user, with preprocessing steps not plotted:
+EWS_calc(df=df, plot_pre=FALSE)
+
+## For multiple users:
+library(parallel)
+mclapply(dfs_list, EWS_calc)
+</pre>
+
+
+</body></html>
