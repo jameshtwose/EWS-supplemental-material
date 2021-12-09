@@ -1,58 +1,78 @@
-body{
-    margin:0;
-    padding:0;
+body {
+    margin: 0;
+    padding: 0;
     font-family: sans-serif;
-  }
-    
-    /* Header CSS */
-  #header {
-  height: 100vh;
-  background: linear-gradient(rgba(121, 121, 120, 0.9), rgba(48, 112, 190, 0.788)), 
-  /* url(https://publons.com/media/thumbs/journal/logos/44169161-d1e4-4f27-81b3-db3de87bd8e6.png.200x200_q95_detail_letterbox_upscale.png); */
-  url(feature_selection_bg.png);
-  background-position: center;
-  background-size:cover;
-  background-attachment: fixed;
-  display: flex;              /* establish flex container */
-  flex-direction: column;     /* stack flex items vertically */
-  justify-content: center;    /* center items vertically, in this case */
-  align-items: center;        /* center items horizontally, in this case */
-  }
-  
-  #header h1{
+}
+
+
+/* Header CSS */
+
+#header {
+    height: 100vh;
+    background: linear-gradient(rgba(48, 112, 190, 0.788), rgba(121, 121, 120, 0.9)), /* url(https://publons.com/media/thumbs/journal/logos/44169161-d1e4-4f27-81b3-db3de87bd8e6.png.200x200_q95_detail_letterbox_upscale.png); */
+    url(feature_selection_bg.png);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    /* establish flex container */
+    flex-direction: column;
+    /* stack flex items vertically */
+    justify-content: center;
+    /* center items vertically, in this case */
+    align-items: center;
+    /* center items horizontally, in this case */
+}
+
+#header h1 {
     color: #fff;
     /* font-weight: bold; */
-    margin:10px;
+    margin: 10px;
     font-size: 35px;
-  }
-  
-  #header h2{
+}
+
+#header h2 {
     color: #fff;
     /* font-weight: bold; */
-    margin:10px;
+    margin: 10px;
     font-size: 25px;
     padding-bottom: 15px;
-  }
-  
-  #header li{
-    color: #fff;
-    /* font-weight: bold; */
-    margin:10px;
-    font-size: 18px;
-  }
-    
-  #analysisList {
-    padding-top: 50px;
-    display: flex;              /* establish flex container */
-    flex-direction: column;     /* stack flex items vertically */
-    justify-content: center;    /* center items vertically, in this case */
-    align-items: center;        /* center items horizontally, in this case */
-  }
-  
-  #navbarMenuHeroA a:hover{
-    background-color: rgba(48, 112, 190, 0.788);
-  }
-  
-  #navbarMenuHeroA {
-    padding-top: 10%;
-  }
+}
+
+.nav-bar {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+}
+
+.navbar {
+    background-color: rgb(48, 112, 190, 0.788);
+}
+
+.navbar {
+    text-align: center;
+}
+
+.navbar-brand img {
+    height: 50px;
+}
+
+.nav-bar .fa-bars {
+    font-size: 35px;
+    color: rgb(255, 255, 255);
+}
+
+.navbar-toggler {
+    outline: none !important;
+}
+
+.navbar-nav {
+    float: right;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.nav-link {
+    color: rgb(255, 255, 255) !important;
+}
